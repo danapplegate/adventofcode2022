@@ -11,9 +11,9 @@ pub struct Solution {
 
 #[derive(Eq, PartialEq)]
 enum Shape {
-    Rock,
-    Paper,
-    Scissors,
+    Rock = 1,
+    Paper = 2,
+    Scissors = 3,
 }
 
 impl From<char> for Shape {
@@ -27,15 +27,6 @@ impl From<char> for Shape {
     }
 }
 
-impl Shape {
-    fn score(&self) -> u32 {
-        match self {
-            Shape::Rock => 1,
-            Shape::Paper => 2,
-            Shape::Scissors => 3,
-        }
-    }
-}
 enum Outcome {
     Lose,
     Draw,
@@ -106,7 +97,7 @@ impl Solvable<2> for Solution {
             } else if my_shape == opponent_shape {
                 score += 3;
             }
-            score += my_shape.score();
+            score += my_shape as u32;
             score
         })?;
 
@@ -123,15 +114,15 @@ impl Solvable<2> for Solution {
                 Outcome::Lose => 0,
             };
             score += match (outcome, opponent_shape) {
-                (Outcome::Draw, my_shape) => my_shape.score(),
+                (Outcome::Draw, my_shape) => my_shape as u32,
                 (Outcome::Lose, Shape::Rock) | (Outcome::Win, Shape::Paper) => {
-                    Shape::Scissors.score()
+                    Shape::Scissors as u32
                 }
                 (Outcome::Lose, Shape::Paper) | (Outcome::Win, Shape::Scissors) => {
-                    Shape::Rock.score()
+                    Shape::Rock as u32
                 }
                 (Outcome::Lose, Shape::Scissors) | (Outcome::Win, Shape::Rock) => {
-                    Shape::Paper.score()
+                    Shape::Paper as u32
                 }
             };
             score
