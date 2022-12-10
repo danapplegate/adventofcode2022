@@ -1,0 +1,42 @@
+use crate::solvable::Solvable;
+use std::fs;
+use std::{error::Error, path::PathBuf};
+
+pub struct Solution {
+    filepath: PathBuf,
+}
+
+impl Solvable<8> for Solution {
+    fn new(filename: &str) -> Self {
+        Solution {
+            filepath: Self::data_path().join(filename),
+        }
+    }
+
+    fn answer1(&self) -> Result<String, Box<dyn Error>> {
+        Ok("".to_string())
+    }
+
+    fn answer2(&self) -> Result<String, Box<dyn Error>> {
+        Ok("".to_string())
+    }
+}
+
+#[allow(unused_imports)]
+mod test {
+    use super::*;
+
+    #[test]
+    fn it_returns_the_correct_first_answer_for_test1() -> Result<(), Box<dyn Error>> {
+        let solution = Solution::new("test1.txt");
+        assert_eq!(solution.answer1()?, "");
+        Ok(())
+    }
+
+    #[test]
+    fn it_returns_the_correct_second_answer_for_test1() -> Result<(), Box<dyn Error>> {
+        let solution = Solution::new("test1.txt");
+        assert_eq!(solution.answer2()?, "");
+        Ok(())
+    }
+}
