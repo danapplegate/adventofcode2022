@@ -1,9 +1,7 @@
 use crate::solvable::Solvable;
-use std::borrow::BorrowMut;
 use std::cell::RefCell;
 use std::fmt::Debug;
 use std::fs;
-use std::ops::{Deref, DerefMut};
 use std::rc::Rc;
 use std::{error::Error, path::PathBuf};
 
