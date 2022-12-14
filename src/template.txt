@@ -22,7 +22,7 @@ impl Solvable<8> for Solution {
     }
 }
 
-#[allow(unused_imports)]
+#[cfg(test)]
 mod test {
     use super::*;
 
